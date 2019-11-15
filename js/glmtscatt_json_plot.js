@@ -1,24 +1,24 @@
-class Simulacao{
+function Simulacao(){
 	// ====== parametros para calculo ======================================================
 	//tipo de feixe (bessel, gauss)
-	tipo_feixe = 'bessel';
+	this.tipo_feixe = "bessel";
 	//post para comunicação python
-	nova(){
+	this.nova = function(){
 		//post para comunicação python
 		console.log("novo_grafico");
+		
 	}
 
 	//retorno do console python
-	show(img_id = "#simulacao"){
+	this.show = function(img_id = "#simulacao"){
 		console.log('exibir_imagem');
 		var data = this.getJSON();
 		$.getJSON('./json/first_test.json', function(data){
 			$(simulacao).attr('src', 'data:image/png;base64, ' + data['data_img']);
 		});
-		
 	}
 
-	getJSON(){
+	this.getJSON = function(){
 		return $.getJSON('./json/first_test.json', function(data){
 			return data;
 		});
